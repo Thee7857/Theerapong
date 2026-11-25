@@ -1,9 +1,11 @@
 services:
   shutdown:
-    build: .
+    build:
+      context: ..
+      dockerfile: Dockerfile
     image: shutdown-command-center
     ports:
-      - "3001:3001"
+      - "3001:8080"
     volumes:
       - shutdown-data:/data        # SQLite file lives here; back this volume up
     environment:

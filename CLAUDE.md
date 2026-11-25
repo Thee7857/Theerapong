@@ -17,7 +17,7 @@ npm install
 npm test -w @shutdown/parser      # also: -w @shutdown/api, -w @shutdown/web
 npx tsc --noEmit -p apps/api      # type check (same for apps/web, packages/shutdown-parser)
 npm run build -w @shutdown/web
-docker compose up -d --build      # http://localhost:3001, open mode
+docker compose up -d --build      # http://localhost:3001, open mode (Dockerfile lives at repo root for Cloud Build/Cloud Run)
 ```
 Local dev: API `npm run dev -w @shutdown/api` (port 3001, DB `./data/shutdown.db`), web `npm run dev -w @shutdown/web` (5173, proxies `/api`). On this machine ports 3001 and 5173 are used by other programs, so use `.claude/launch.json` configs: `web` (5183, expects API on 3011 via `API_URL`, serves the workbook at `/__sample.xlsx`) and `prod` (API serving the built web on 3012). Don't kill processes you didn't start.
 
